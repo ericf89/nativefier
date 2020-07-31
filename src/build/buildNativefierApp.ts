@@ -111,6 +111,8 @@ export async function buildNativefierApp(rawOptions: any): Promise<string> {
   options.packager.dir = tmpPath; // const optionsWithTmpPath = { ...options, dir: tmpPath };
   await convertIconIfNecessary(options);
 
+  options.packager.extraResource = options.nativefier.flashPluginDir;
+
   log.info(
     "\nPackaging... This will take a few seconds, maybe minutes if the requested Electron isn't cached yet...",
   );

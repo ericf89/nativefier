@@ -38,7 +38,11 @@ if (appArgs.processEnvs) {
 let mainWindow;
 
 if (typeof appArgs.flashPluginDir === 'string') {
-  app.commandLine.appendSwitch('ppapi-flash-path', appArgs.flashPluginDir);
+  app.commandLine.appendSwitch(
+    'ppapi-flash-path',
+    path.resolve(process.resourcesPath, appArgs.flashPluginDir),
+  );
+  console.log(path.resolve(process.resourcesPath, appArgs.flashPluginDir));
 } else if (appArgs.flashPluginDir) {
   const flashPath = inferFlashPath();
   app.commandLine.appendSwitch('ppapi-flash-path', flashPath);
